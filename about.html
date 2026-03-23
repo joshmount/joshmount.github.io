@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | joshmount - Climb with Brotherhood</title>
+    <title>Our Team | joshmount</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #00AEEF;
-            --dark-navy: #0f172a;
+            --dark-bg: #000000;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; color: var(--dark-navy); }
+        body { font-family: 'Montserrat', sans-serif; background-color: white; color: #111; }
 
-        /* Navbar (Tetap Konsisten) */
+        /* Navbar Konsisten */
         nav {
             background: white;
-            padding: 12px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -29,71 +29,91 @@
         }
         .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo-img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-blue); }
-        .logo-text { font-weight: 800; font-size: 1.6rem; color: var(--dark-navy); }
+        .logo-text { font-weight: 800; font-size: 1.6rem; color: #0f172a; }
         .nav-links { list-style: none; display: flex; gap: 20px; }
         .nav-links a { text-decoration: none; color: #475569; font-weight: 700; font-size: 0.8rem; }
 
-        /* Header Halaman About */
-        .about-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
-                        url('https://images.unsplash.com/photo-1551632432-c735e8299278?w=1200') no-repeat center center/cover;
-            height: 40vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        .about-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
-        .about-header p { font-size: 1.2rem; opacity: 0.9; letter-spacing: 2px; }
+        /* Container Utama */
+        .container { padding: 80px 8%; max-width: 1300px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Team Section */
-        .team-section { padding: 80px 8%; text-align: center; }
-        .team-section h2 { font-size: 2.5rem; margin-bottom: 50px; position: relative; padding-bottom: 15px; }
-        .team-section h2::after { content: ''; width: 60px; height: 4px; background: var(--primary-blue); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
-
+        /* GRID TIM STYLE SEVENPRENEUR */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
-        /* Card Anggota */
-        .member-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            border-bottom: 5px solid transparent;
+        /* KARTU ANGGOTA PREMIUM */
+        .team-card {
+            position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.25;
+            transition: 0.4s ease;
+            cursor: pointer;
         }
-        .member-card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--primary-blue); }
 
-        .member-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        /* Background Gradient (Vibe Sevenpreneur) */
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #0f172a 0%, #1e40af 50%, #701a75 100%);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .team-card:hover { transform: translateY(-10px); }
+
+        /* Foto Grayscale */
+        .team-img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            margin-bottom: 25px;
-            border: 4px solid #f1f5f9;
+            filter: grayscale(100%);
+            position: relative;
+            z-index: 2;
+            transition: 0.5s;
         }
 
-        .member-name { font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; color: var(--dark-navy); }
-        .member-role { color: var(--primary-blue); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
-        .member-bio { font-size: 0.95rem; line-height: 1.6; color: #64748b; margin-bottom: 20px; }
+        .team-card:hover .team-img { filter: grayscale(0%); opacity: 0.9; }
 
-        .member-social a { color: #94a3b8; font-size: 1.2rem; margin: 0 10px; transition: 0.3s; }
-        .member-social a:hover { color: var(--primary-blue); }
+        /* Overlay Info Teks */
+        .team-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+            z-index: 3;
+            text-align: center;
+        }
 
-        /* Footer */
-        footer { background: var(--dark-navy); color: white; text-align: center; padding: 60px 20px; margin-top: 50px; }
+        .team-info h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .about-header h1 { font-size: 2rem; }
+        .team-info p {
+            color: #cbd5e1;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        footer { background: #0f172a; color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+
+        @media (max-width: 600px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .team-info h3 { font-size: 1rem; }
+            .team-info p { font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -106,58 +126,76 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
-            <li><a href="index.html#trip">DESTINATION</a></li>
             <li><a href="about.html" style="color: var(--primary-blue);">ABOUT US</a></li>
         </ul>
     </nav>
 
-    <header class="about-header">
-        <h1>OUR TEAM</h1>
-        <p>THE MINDS BEHIND JOSHMOUNT</p>
-    </header>
-
-    <section class="team-section">
-        <h2>Siapa Kami?</h2>
-        <p style="max-width: 800px; margin: 0 auto 50px; line-height: 1.8; color: #64748b;">
-            Kami adalah sekelompok petualang yang percaya bahwa setiap gunung memiliki pelajaran tentang persaudaraan. 
-            Melalui joshmount, kami berkomitmen memberikan pengalaman mendaki yang aman, edukatif, dan penuh solidaritas.
-        </p>
+    <div class="container">
+        <h2 class="section-title">Our Team</h2>
 
         <div class="team-grid">
-            <div class="member-card">
-                <img src="image_7.png" alt="Deri Yuliansyah" class="member-img">
-                <span class="member-role">Founder & Lead Expedition</span>
-                <h3 class="member-name">Deri Yuliansyah</h3>
-                <p class="member-bio">
-                    Seorang mahasiswa Sains Data yang memiliki passion besar di dunia pendakian. 
-                    Deri bertanggung jawab atas strategi operasional dan memastikan konsep "Brotherhood" 
-                    terlaksana di setiap trip.
-                </p>
-                <div class="member-social">
-                    <a href="https://www.instagram.com/derrr_ans"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+            
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Alawi" class="team-img">
+                <div class="team-info">
+                    <h3>Alawi</h3>
+                    <p>Leader</p>
                 </div>
             </div>
 
-            <div class="member-card">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300" alt="Team Member" class="member-img">
-                <span class="member-role">Base Manager / Guide</span>
-                <h3 class="member-name">Anggota Tim 2</h3>
-                <p class="member-bio">
-                    Berpengalaman dalam manajemen logistik dan navigasi darat. 
-                    Memastikan seluruh kebutuhan peserta dari mulai *basecamp* hingga puncak terpenuhi.
-                </p>
-                <div class="member-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="agew" class="team-img">
+                <div class="team-info">
+                    <h3>agew</h3>
+                    <p>Administrator</p>
                 </div>
             </div>
+
+            <div class="team-card">
+                <img src="image_7.png" alt="Deri" class="team-img">
+                <div class="team-info">
+                    <h3>Deri</h3>
+                    <p>Digital Creative</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="Ina" class="team-img">
+                <div class="team-info">
+                    <h3>Ina</h3>
+                    <p>Logistik 1</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="Rizal" class="team-img">
+                <div class="team-info">
+                    <h3>Rizal</h3>
+                    <p>Logistik 2</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="Egi" class="team-img">
+                <div class="team-info">
+                    <h3>Egi</h3>
+                    <p>Inventory Alat</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="Nazmi" class="team-img">
+                <div class="team-info">
+                    <h3>Nazmi</h3>
+                    <p>Benner</p>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
     <footer>
-        <div style="font-weight: 800; font-size: 1.5rem; margin-bottom: 10px;">joshmount</div>
-        <p style="opacity: 0.7; margin-bottom: 20px;">Open Trip • Private Trip • Dokumentasi Perjalanan</p>
-        <div style="opacity: 0.4; font-size: 0.8rem;">&copy; 2026 joshmount by Deri. All Rights Reserved.</div>
+        <p style="opacity: 0.6; font-size: 0.8rem;">&copy; 2026 joshmount by Deri. All Rights Reserved.</p>
     </footer>
 
 </body>
