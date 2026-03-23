@@ -3,53 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>joshmount | Solusi Jelajahi Keindahan Alam Indonesia</title>
+    <title>joshmount | Jelajahi Keindahan Alam Indonesia</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #2563eb;
-            --light-blue: #dbeafe;
             --dark-navy: #0f172a;
-            --glass: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; color: var(--dark-navy); overflow-x: hidden; }
 
-        /* 1. TOP PROMO BAR CONTAINER (Inspirasi Sevenpreneur) */
+        /* 1. PROMO BAR BERJALAN (MARQUEE) */
         .promo-bar-container {
-            background: linear-gradient(90deg, #dbeafe 0%, #fee2e2 100%);
+            background: linear-gradient(90deg, #e0e7ff 0%, #fae8ff 100%);
             height: 40px;
             overflow: hidden;
             position: relative;
-            z-index: 999;
+            display: flex;
+            align-items: center;
         }
 
         .promo-bar-content {
             display: flex;
             width: 200%;
-            height: 100%;
-            animation: marquee 20s linear infinite;
+            animation: marquee 25s linear infinite;
         }
 
-        .promo-text-item {
+        .promo-item {
             flex-shrink: 0;
             width: 50%;
             display: flex;
             justify-content: space-around;
             align-items: center;
             font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
+            font-weight: 700;
             color: #1e40af;
+            white-space: nowrap;
         }
 
-        .promo-text-item .badge {
+        .promo-item .badge {
             background: white;
-            padding: 2px 12px;
+            padding: 2px 15px;
             border-radius: 20px;
-            border: 1px solid #1e40af;
+            border: 1.5px solid #1e40af;
             margin-left: 10px;
         }
 
@@ -58,181 +56,198 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* 2. NAVBAR MODERN DENGAN LOGO GAMBAR */
+        /* 2. NAVBAR DENGAN LOGO JOSHMOUNT.PNG (SUDAH BULAT) */
         nav {
             background: white;
-            padding: 15px 8%;
+            padding: 12px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; color: var(--dark-navy); text-decoration: none; text-transform: uppercase; }
+
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         
-        .logo-img {
-            height: 35px;
-            width: auto;
+        /* GAYA LOGO BULAT BARU DI SINI */
+        .logo-img { 
+            height: 45px; /* Sedikit diperbesar agar lingkarannya jelas */
+            width: 45px;  /* Wajib sama dengan height agar bulat sempurna */
+            border-radius: 50%; /* Ini yang membuat bulat */
+            object-fit: cover;  /* Memastikan gambar tidak gepeng di dalam lingkaran */
+            border: 2px solid var(--primary-blue); /* Opsional: Border biru agar tegas */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Opsional: Bayangan halus */
         }
+
+        .logo-text { font-weight: 800; font-size: 1.6rem; color: var(--dark-navy); text-transform: lowercase; }
 
         .nav-links { list-style: none; display: flex; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #475569; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: #475569; font-weight: 700; font-size: 0.85rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary-blue); }
-        .btn-my-trip { background: var(--primary-blue); color: white !important; padding: 10px 22px; border-radius: 30px; }
+        .btn-nav { background: var(--primary-blue); color: white !important; padding: 10px 22px; border-radius: 30px; }
 
-        /* 3. HERO SECTION (Glassmorphism Concept) */
+        /* 3. HERO GLASSMORPHISM */
         .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
                         url('https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?q=80&w=2070') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
+
         .glass-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 50px 40px;
             text-align: center;
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             color: white;
         }
-        .glass-card h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
-        .glass-card p { font-size: clamp(0.8rem, 2vw, 1.1rem); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
-        .btn-cta { background: var(--primary-blue); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
+
+        .glass-card h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: 5px; margin-bottom: 15px; }
+        .glass-card .sub-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; }
+        .glass-card .description { 
+            font-size: 1rem; 
+            line-height: 1.8; 
+            font-weight: 600; 
+            margin-bottom: 40px; 
+            text-transform: uppercase;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-cta { 
+            background: var(--primary-blue); 
+            color: white; 
+            padding: 16px 35px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
         .btn-cta:hover { transform: translateY(-5px); background: white; color: var(--primary-blue); }
 
-        /* 4. PERBAIKAN TOTAL: UPCOMING TRIPS SECTION ( PREMIUM DESIGN ) */
+        /* 4. PREMIUM TRIP GALLERY */
         .trip-section { padding: 100px 8%; text-align: center; }
+        .section-header { margin-bottom: 70px; }
+        .section-header h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; }
+        .section-header h2 span { color: var(--primary-blue); }
+
+        .trip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         
-        /* Gaya Judul Unik */
-        .section-title-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 80px; }
-        .icon-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary-blue); display: flex; justify-content: center; align-items: center; color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 20px; }
-        .section-title-wrapper h2 { font-size: 2.8rem; font-weight: 800; color: var(--dark-navy); display: flex; align-items: center; gap: 10px; }
-        .section-title-wrapper h2 .arrow-group { color: var(--primary-blue); display: flex; align-items: center; gap: 10px; }
-        .section-title-wrapper p { color: #64748b; font-size: 1.1rem; margin-top: 10px; }
-
-        /* Modern Grid Layout */
-        .modern-trip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; }
-
-        /* Modern Card Design */
         .modern-card {
             position: relative;
-            height: 400px; /* Tinggi kartu diperbesar */
-            border-radius: 30px; /* Sudut lebih melengkung */
+            height: 450px;
+            border-radius: 35px;
             overflow: hidden;
             background-size: cover;
             background-position: center;
             transition: 0.5s;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            text-decoration: none;
         }
-        
-        .modern-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+        .modern-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
 
-        /* Konteks Lokasi di Atas Kartu */
-        .card-top-context {
-            position: absolute;
-            top: 25px; left: 25px;
-            background: rgba(15, 23, 42, 0.7); /* Background gelap transparan */
+        .location-tag {
+            align-self: flex-start;
+            background: rgba(15, 23, 42, 0.8);
             color: white;
             padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 10;
+            font-weight: 700;
+            backdrop-filter: blur(5px);
         }
 
-        /* Info di Bawah dengan Gradient Overlay */
-        .card-bottom-info {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%;
-            padding: 40px 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        .card-info {
             color: white;
             text-align: left;
-            z-index: 10;
+            position: relative;
+            z-index: 2;
+        }
+        .modern-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            z-index: 1;
         }
 
-        .card-price {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: white;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .card-price .per-pax { font-size: 0.9rem; opacity: 0.8; font-weight: 400; }
+        .price-tag { font-size: 1.6rem; font-weight: 800; display: block; margin-bottom: 5px; }
+        .trip-title { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .trip-meta { font-size: 0.9rem; font-weight: 600; opacity: 0.8; }
 
-        .card-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
-        .info { font-size: 0.95rem; opacity: 0.8; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
-
-        /* Tombol Link Halus Covering Seluruh Kartu */
-        .card-overlay-link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20; }
-
-        /* 5. FOOTER (Tetap dipertahankan) */
+        /* 5. FOOTER & WA */
         footer { background: var(--dark-navy); color: white; text-align: center; padding: 80px 20px; }
-        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; }
-        .footer-sub { opacity: 0.7; font-size: 0.95rem; margin-bottom: 30px; }
-        .social-link { color: white; font-size: 1.8rem; text-decoration: none; display: inline-block; margin-bottom: 40px; transition: 0.3s; }
+        .social-link { color: white; font-size: 2rem; transition: 0.3s; }
         .social-link:hover { color: var(--primary-blue); }
-        .copyright { font-size: 0.85rem; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
-
-        /* Floating WA */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 2000; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .modern-trip-grid { grid-template-columns: 1fr; }
-            .section-title-wrapper h2 { font-size: 2.2rem; flex-wrap: wrap; justify-content: center; }
+            .glass-card { padding: 40px 20px; }
+            .glass-card h1 { font-size: 2.8rem; }
+            .glass-card .description { font-size: 0.85rem; }
+            .trip-grid { grid-template-columns: 1fr; }
+            .logo-img { height: 38px; width: 38px; } /* Sedikit mengecil di HP */
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/6281234567890" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <div class="promo-bar-container">
         <div class="promo-bar-content">
-            <div class="promo-text-item">
-                🎉 Promo Ramadhan: Diskon 10% Semua Trip! 
-                <span class="badge">Ambil Slot!</span>
+            <div class="promo-item">
+                🎉 PROMO RAMADHAN: DISKON 10% SEMUA TRIP! <span class="badge">AMBIL SLOT!</span>
             </div>
-            <div class="promo-text-item">
-                🎉 Promo Libur Lebaran: Diskon 10% Semua Trip! 
-                <span class="badge">Ambil Slot!</span>
+            <div class="promo-item">
+                🎉 PROMO RAMADHAN: DISKON 10% SEMUA TRIP! <span class="badge">AMBIL SLOT!</span>
             </div>
         </div>
     </div>
 
     <nav>
-        <a href="#" class="logo">
-            <img src="joshmount.png" alt="Logo joshmount" class="logo-img"> joshmount
+        <a href="#" class="logo-wrapper">
+            <img src="joshmount.png" alt="Logo" class="logo-img">
+            <span class="logo-text">joshmount</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#">Program</a></li>
-            <li><a href="#">Destination</a></li>
-            <li><a href="#">Event</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#trip" class="btn-my-trip">Lihat Jadwal</a></li>
+            <li><a href="#">PROGRAM</a></li>
+            <li><a href="#">DESTINASI</a></li>
+            <li><a href="#">EVENT</a></li>
+            <li><a href="#trip" class="btn-nav">LIHAT JADWAL</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="glass-card">
             <h1>JOSHMOUNT</h1>
-            <p>Jelajahi Keindahan Alam Indonesia Bersama Kami</p>
+            <p class="sub-title">Jelajahi Keindahan Alam Indonesia Bersama Kami</p>
+            <p class="description">
+                Bukan sekadar perjalanan, tapi tentang cerita yang akan kamu bawa pulang. 
+                Dengan konsep Climb with Brotherhood, kami tidak hanya mengajak kamu mendaki, 
+                tetapi juga membangun kebersamaan, solidaritas, dan pengalaman yang tak terlupakan di alam terbuka.
+            </p>
             <a href="#trip" class="btn-cta">
                 OPEN TRIP KITA <i class="fas fa-arrow-right"></i>
             </a>
@@ -240,55 +255,38 @@
     </header>
 
     <section class="trip-section" id="trip">
-        <div class="section-title-wrapper">
-            <div class="icon-circle"><i class="fas fa-mountain"></i></div>
-            <h2>Upcoming <span class="arrow-group"><i class="fas fa-arrow-right"></i> Trip</span></h2>
-            <p>Pilih destinasi petualanganmu berikutnya</p>
+        <div class="section-header">
+            <h2>Upcoming <span>Trip</span></h2>
+            <p>Pilih petualanganmu berikutnya bersama joshmount</p>
         </div>
 
         <div class="trip-grid">
-            <div class="card">
-                <img src="https://unsplash.com/id/foto/pemandangan-puncak-gunung-saat-matahari-terbenam-eq7-NZ0a9hg" class="card-img">
-                <div class="card-content">
-                    <span class="price">Rp 400.000 /pax</span>
-                    <h3>Gunung Gede Via Putri</h3>
-                    <div class="info"><i class="fas fa-calendar"></i> TEKTOK & 2D1N</div>
-                    <a href="#" class="book-btn">Booking Sekarang</a>
+            <a href="https://wa.me/6281234567890" class="modern-card" style="background-image: url('https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=800');">
+                <div class="location-tag"><i class="fas fa-map-marker-alt"></i> BROMO, JAWA TIMUR</div>
+                <div class="card-info">
+                    <span class="price-tag">Rp 450.000</span>
+                    <h3 class="trip-title">Golden Sunrise Bromo</h3>
+                    <div class="trip-meta"><i class="fas fa-calendar-alt"></i> SETIAP SABTU & MINGGU</div>
                 </div>
-            </div>
+            </a>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1544918877-460635b6d13e?w=600" class="card-img">
-                <div class="card-content">
-                    <span class="price">Rp 350.000 /pax</span>
-                    <h3>Gunung Canggah Via Pasir Jaka</h3>
-                    <div class="info"><i class="fas fa-calendar"></i> TEKTOK & 2D1N</div>
-                    <a href="#" class="book-btn">Booking Sekarang</a>
+            <a href="https://wa.me/6281234567890" class="modern-card" style="background-image: url('https://images.unsplash.com/photo-1544918877-460635b6d13e?w=800');">
+                <div class="location-tag"><i class="fas fa-map-marker-alt"></i> IJEN, BANYUWANGI</div>
+                <div class="card-info">
+                    <span class="price-tag">Rp 350.000</span>
+                    <h3 class="trip-title">The Blue Fire Ijen</h3>
+                    <div class="trip-meta"><i class="fas fa-calendar-alt"></i> WEEKEND BATCH</div>
                 </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=600" class="card-img">
-                <div class="card-content">
-                    <span class="price">Rp 100.000 /pax</span>
-                    <h3>Gunung Parang</h3>
-                    <div class="info"><i class="fas fa-ship"></i> TEKTOK & 2D1N</div>
-                    <a href="#" class="book-btn">Booking Sekarang</a>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">joshmount</div>
-        <div class="footer-sub">Open Trip • Private Trip • Dokumentasi Perjalanan</div>
-        
-        <a href="https://www.instagram.com/derrr_ans" class="social-link" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-
-        <div class="copyright">
-            &copy; 2026 by joshmount. All Rights Reserved.
+        <div class="footer-logo" style="font-weight: 800; font-size: 2rem; margin-bottom: 10px;">joshmount</div>
+        <div class="footer-sub" style="opacity: 0.7; margin-bottom: 30px;">Open Trip • Private Trip • Dokumentasi Perjalanan</div>
+        <a href="https://www.instagram.com/derrr_ans" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+        <div style="margin-top: 40px; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            &copy; 2026 joshmount by Deri. All Rights Reserved.
         </div>
     </footer>
 
