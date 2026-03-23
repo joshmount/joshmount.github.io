@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joshmount | Solusi Open Trip & Petualangan Seru</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9; /* Biru langit cerah */
+            --accent: #f59e0b; /* Oranye matahari */
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Floating WA */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* Hero */
+        header {
+            height: 90vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.5)), 
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070') no-repeat center center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px;
+        }
+
+        .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; color: var(--primary); margin-bottom: 20px; }
+        header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; letter-spacing: -1px; }
+        header p { font-size: 1.2rem; margin: 20px 0 40px; opacity: 0.9; max-width: 600px; }
+
+        .btn-trip {
+            background: var(--primary);
+            color: white; padding: 15px 40px;
+            text-decoration: none; font-weight: bold;
+            border-radius: 50px; transition: 0.3s;
+        }
+        .btn-trip:hover { background: white; color: var(--dark); }
+
+        /* Gallery */
+        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--dark); }
+
+        .trip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); }
+
+        .card-img { width: 100%; height: 250px; object-fit: cover; }
+        .card-body { padding: 25px; }
+        .price { color: var(--primary); font-weight: 800; font-size: 1.4rem; display: block; margin-bottom: 10px; }
+        .card-body h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .details { font-size: 0.9rem; color: #64748b; margin-bottom: 25px; }
+
+        .book-btn {
+            display: block; text-align: center; background: #0f172a;
+            color: white; padding: 12px; border-radius: 12px;
+            text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .book-btn:hover { background: var(--primary); }
+
+        footer {
+            background: var(--dark); color: white;
+            text-align: center; padding: 60px 20px;
+        }
+
+        @media (max-width: 768px) {
+            header { height: 70vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20joshmount,%20saya%20tertarik%20tripnya!" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="logo-text">JOSHMOUNT</div>
+        <h1>Jelajahi Puncak Tertinggi</h1>
+        <p>Bukan sekadar perjalanan, tapi tentang cerita yang akan kamu bawa pulang. Temukan teman baru dan destinasi impianmu.</p>
+        <a href="#trip" class="btn-trip">Lihat Jadwal Trip</a>
+    </header>
+
+    <section id="trip">
+        <div class="section-title">
+            <h2>Upcoming Trips</h2>
+            <p>Pilih destinasi petualanganmu berikutnya</p>
+        </div>
+
+        <div class="trip-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=600" alt="Bromo" class="card-img">
+                <div class="card-body">
+                    <span class="price">Rp 450.000 /pax</span>
+                    <h3>Golden Sunrise Bromo</h3>
+                    <p class="details"><i class="fas fa-calendar"></i> Setiap Sabtu & Minggu</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20joshmount,%20mau%20daftar%20Bromo%20dong!" class="book-btn">Booking Sekarang</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544918877-460635b6d13e?w=600" alt="Ijen" class="card-img">
+                <div class="card-body">
+                    <span class="price">Rp 350.000 /pax</span>
+                    <h3>The Blue Fire Ijen</h3>
+                    <p class="details"><i class="fas fa-calendar"></i> Weekend Batch</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20joshmount,%20cek%20slot%20Ijen%20dong!" class="book-btn">Booking Sekarang</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=600" alt="Bajo" class="card-img">
+                <div class="card-body">
+                    <span class="price">Rp 2.900.000 /pax</span>
+                    <h3>Sailing Labuan Bajo</h3>
+                    <p class="details"><i class="fas fa-calendar"></i> 3 Hari 2 Malam (LOB)</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20joshmount,%20tanya%20jadwal%20Bajo!" class="book-btn">Booking Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="margin-bottom: 20px;">joshmount</h2>
+        <p style="opacity: 0.7;">Open Trip • Private Trip • Dokumentasi Perjalanan</p>
+        <div style="margin: 30px 0;">
+            <a href="https://www.instagram.com/derrr_ans" style="color:white; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="font-size: 0.9rem; opacity: 0.5;">&copy; 2026 joshmount by Deri. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
