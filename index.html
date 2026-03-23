@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>joshmount | Solusi Open Trip & Petualangan Seru</title>
+    <title>joshmount | Solusi Jelajahi Keindahan Alam Indonesia</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -17,22 +17,48 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; color: var(--dark-navy); overflow-x: hidden; }
 
-        /* 1. TOP PROMO BAR (Inspirasi Sevenpreneur) */
-        .promo-bar {
+        /* 1. TOP PROMO BAR CONTAINER (Inspirasi Sevenpreneur) */
+        .promo-bar-container {
             background: linear-gradient(90deg, #dbeafe 0%, #fee2e2 100%);
-            padding: 8px 20px;
-            text-align: center;
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            z-index: 999;
+        }
+
+        .promo-bar-content {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            animation: marquee 20s linear infinite;
+        }
+
+        .promo-text-item {
+            flex-shrink: 0;
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             font-size: 0.85rem;
             font-weight: 600;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
+            white-space: nowrap;
+            color: #1e40af;
         }
-        .promo-bar span { color: #1e40af; }
-        .promo-bar .badge { background: white; padding: 2px 12px; border-radius: 20px; border: 1px solid #1e40af; }
 
-        /* 2. NAVBAR MODERN */
+        .promo-text-item .badge {
+            background: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            border: 1px solid #1e40af;
+            margin-left: 10px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* 2. NAVBAR MODERN DENGAN LOGO GAMBAR */
         nav {
             background: white;
             padding: 15px 8%;
@@ -44,8 +70,12 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; color: var(--dark-navy); text-decoration: none; }
-        .logo i { color: var(--primary-blue); }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; color: var(--dark-navy); text-decoration: none; text-transform: uppercase; }
+        
+        .logo-img {
+            height: 35px;
+            width: auto;
+        }
 
         .nav-links { list-style: none; display: flex; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: #475569; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
@@ -75,31 +105,83 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             color: white;
         }
-        .glass-card h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: 4px; margin-bottom: 10px; }
+        .glass-card h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
         .glass-card p { font-size: clamp(0.8rem, 2vw, 1.1rem); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
         .btn-cta { background: var(--primary-blue); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
         .btn-cta:hover { transform: translateY(-5px); background: white; color: var(--primary-blue); }
 
-        /* 4. UPCOMING TRIPS SECTION (Tetap dipertahankan) */
-        .trip-section { padding: 80px 8%; text-align: center; }
-        .trip-section h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .trip-section p { color: #64748b; margin-bottom: 50px; }
+        /* 4. PERBAIKAN TOTAL: UPCOMING TRIPS SECTION ( PREMIUM DESIGN ) */
+        .trip-section { padding: 100px 8%; text-align: center; }
+        
+        /* Gaya Judul Unik */
+        .section-title-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 80px; }
+        .icon-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary-blue); display: flex; justify-content: center; align-items: center; color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 20px; }
+        .section-title-wrapper h2 { font-size: 2.8rem; font-weight: 800; color: var(--dark-navy); display: flex; align-items: center; gap: 10px; }
+        .section-title-wrapper h2 .arrow-group { color: var(--primary-blue); display: flex; align-items: center; gap: 10px; }
+        .section-title-wrapper p { color: #64748b; font-size: 1.1rem; margin-top: 10px; }
 
-        .trip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; text-align: left; }
-        .card:hover { transform: translateY(-10px); }
-        .card-img { width: 100%; height: 230px; object-fit: cover; }
-        .card-content { padding: 25px; }
-        .price { color: var(--primary-blue); font-weight: 800; font-size: 1.3rem; margin-bottom: 12px; display: block; }
-        .card-content h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--dark-navy); }
-        .info { font-size: 0.9rem; color: #64748b; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
+        /* Modern Grid Layout */
+        .modern-trip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; }
 
-        .book-btn { background: var(--dark-navy); color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; text-align: center; transition: 0.3s; }
-        .book-btn:hover { background: var(--primary-blue); }
+        /* Modern Card Design */
+        .modern-card {
+            position: relative;
+            height: 400px; /* Tinggi kartu diperbesar */
+            border-radius: 30px; /* Sudut lebih melengkung */
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: 0.5s;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .modern-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+
+        /* Konteks Lokasi di Atas Kartu */
+        .card-top-context {
+            position: absolute;
+            top: 25px; left: 25px;
+            background: rgba(15, 23, 42, 0.7); /* Background gelap transparan */
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        /* Info di Bawah dengan Gradient Overlay */
+        .card-bottom-info {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 40px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            color: white;
+            text-align: left;
+            z-index: 10;
+        }
+
+        .card-price {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .card-price .per-pax { font-size: 0.9rem; opacity: 0.8; font-weight: 400; }
+
+        .card-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        .info { font-size: 0.95rem; opacity: 0.8; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
+
+        /* Tombol Link Halus Covering Seluruh Kartu */
+        .card-overlay-link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20; }
 
         /* 5. FOOTER (Tetap dipertahankan) */
         footer { background: var(--dark-navy); color: white; text-align: center; padding: 80px 20px; }
-        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; }
+        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; }
         .footer-sub { opacity: 0.7; font-size: 0.95rem; margin-bottom: 30px; }
         .social-link { color: white; font-size: 1.8rem; text-decoration: none; display: inline-block; margin-bottom: 40px; transition: 0.3s; }
         .social-link:hover { color: var(--primary-blue); }
@@ -110,7 +192,8 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .promo-bar { font-size: 0.7rem; }
+            .modern-trip-grid { grid-template-columns: 1fr; }
+            .section-title-wrapper h2 { font-size: 2.2rem; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -120,14 +203,22 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div class="promo-bar">
-        <span>🎉 Promo Ramadhan: Diskon 10% Semua Trip!</span>
-        <div class="badge">Ambil Slot!</div>
+    <div class="promo-bar-container">
+        <div class="promo-bar-content">
+            <div class="promo-text-item">
+                🎉 Promo Ramadhan: Diskon 10% Semua Trip! 
+                <span class="badge">Ambil Slot!</span>
+            </div>
+            <div class="promo-text-item">
+                🎉 Promo Ramadhan: Diskon 10% Semua Trip! 
+                <span class="badge">Ambil Slot!</span>
+            </div>
+        </div>
     </div>
 
     <nav>
         <a href="#" class="logo">
-            <i class="fas fa-mountain"></i> joshmount
+            <img src="joshmount.png" alt="Logo joshmount" class="logo-img"> joshmount
         </a>
         <ul class="nav-links">
             <li><a href="#">Program</a></li>
@@ -142,7 +233,6 @@
         <div class="glass-card">
             <h1>JOSHMOUNT</h1>
             <p>Jelajahi Keindahan Alam Indonesia Bersama Kami</p>
-            <p>Bukan sekadar perjalanan, tapi tentang cerita yang akan kamu bawa pulang. Dengan konsep Climb With Brotherhood, kami tidak hanya mengajak kamu mendaki, tetapi juga membangun kebersamaan, solidaritas, dan pengalaman yang tak terlupakan di alam terbuka.</p>
             <a href="#trip" class="btn-cta">
                 OPEN TRIP KITA <i class="fas fa-arrow-right"></i>
             </a>
@@ -150,8 +240,11 @@
     </header>
 
     <section class="trip-section" id="trip">
-        <h2>Upcoming Trips</h2>
-        <p>Pilih destinasi petualanganmu berikutnya</p>
+        <div class="section-title-wrapper">
+            <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+            <h2>Upcoming <span class="arrow-group"><i class="fas fa-arrow-right"></i> Trip</span></h2>
+            <p>Pilih destinasi petualanganmu berikutnya</p>
+        </div>
 
         <div class="trip-grid">
             <div class="card">
@@ -195,7 +288,7 @@
         </a>
 
         <div class="copyright">
-            &copy; 2026 joshmount by Deri. All Rights Reserved.
+            &copy; 2026 by joshmount. All Rights Reserved.
         </div>
     </footer>
 
