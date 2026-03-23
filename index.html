@@ -8,13 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #00AEEF; /* Biru muda sesuai screenshot */
+            --primary-blue: #00AEEF;
             --dark-navy: #0f172a;
             --btn-dark: #121826;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: white; color: var(--dark-navy); overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: white; color: var(--dark-navy); overflow-x: hidden; scroll-behavior: smooth; }
 
         /* 1. PROMO BAR BERJALAN */
         .promo-bar-container {
@@ -47,12 +47,12 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* 2. NAVBAR DENGAN LOGO BULAT & ABOUT US */
+        /* 2. NAVBAR (HANYA LOGO) */
         nav {
             background: white;
             padding: 12px 8%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Logo diposisikan di tengah agar lebih estetik karena menu hilang */
             align-items: center;
             position: sticky;
             top: 0;
@@ -64,11 +64,7 @@
         .logo-img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-blue); }
         .logo-text { font-weight: 800; font-size: 1.6rem; color: var(--dark-navy); }
 
-        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #475569; font-weight: 700; font-size: 0.8rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary-blue); }
-
-        /* 3. HERO SECTION (SESUAI SCREENSHOT AWAL) */
+        /* 3. HERO SECTION */
         .hero {
             height: 90vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
@@ -84,22 +80,88 @@
 
         .hero h2 { color: var(--primary-blue); font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 30px; line-height: 1.1; }
-        .hero p { max-width: 600px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9; }
+        .hero p { max-width: 650px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9; }
 
         .btn-schedule { 
             background: var(--primary-blue); 
             color: white; 
             padding: 15px 45px; 
-            border-radius: 50px; /* Bulat sesuai screenshot */
+            border-radius: 50px; 
             text-decoration: none; 
             font-weight: 700; 
             transition: 0.3s;
         }
         .btn-schedule:hover { transform: scale(1.05); background: white; color: var(--primary-blue); }
 
-        /* 4. GALERI TRIP (KEMBALI KE GAYA AWAL) */
-        .trip-section { padding: 80px 8%; text-align: center; }
-        .trip-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        /* 4. ABOUT US SECTION */
+        .about-section {
+            padding: 100px 8% 60px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .about-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; }
+        .about-section p { font-size: 1.1rem; line-height: 1.8; color: #475569; font-weight: 500; }
+
+        /* 5. OUR TEAM SECTION */
+        .team-section { padding: 40px 8% 100px; text-align: center; background-color: #fcfcfc; }
+        .team-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            position: relative;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.25;
+            transition: 0.4s ease;
+            cursor: pointer;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #0f172a 0%, #1e40af 50%, #701a75 100%);
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .team-card:hover { transform: translateY(-10px); }
+
+        .team-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            position: relative;
+            z-index: 2;
+            transition: 0.5s;
+        }
+
+        .team-card:hover .team-img { filter: grayscale(0%); }
+
+        .team-info {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 25px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+            z-index: 3;
+            text-align: center;
+        }
+
+        .team-info h3 { color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .team-info p { color: #94a3b8; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 6. GALLERY TRIP */
+        .trip-section { padding: 100px 8%; text-align: center; }
+        .trip-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
         .trip-section p.sub { color: #64748b; margin-bottom: 60px; }
 
         .trip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -131,19 +193,14 @@
             text-align: center;
         }
 
-        /* 5. FOOTER & ABOUT US SECTION */
-        #about { padding: 80px 8%; background: #f8fafc; text-align: center; }
-        #about p { max-width: 800px; margin: 0 auto; line-height: 1.8; color: #475569; }
-
+        /* 7. FOOTER */
         footer { background: var(--dark-navy); color: white; text-align: center; padding: 60px 20px; }
         .social-link { color: white; font-size: 1.8rem; }
-        .copyright { margin-top: 30px; opacity: 0.5; font-size: 0.8rem; }
-
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
             .hero h1 { font-size: 2.2rem; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
         }
     </style>
 </head>
@@ -163,11 +220,6 @@
             <img src="joshmount.png" alt="Logo" class="logo-img">
             <span class="logo-text">joshmount</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="#">PROGRAM</a></li>
-            <li><a href="#">DESTINATION</a></li>
-            <li><a href="#">EVENT</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
     </nav>
 
     <header class="hero">
@@ -176,6 +228,49 @@
         <p>Bukan sekadar perjalanan, tapi tentang cerita yang akan kamu bawa pulang. Temukan teman baru dan destinasi impianmu.</p>
         <a href="#trip" class="btn-schedule">Lihat Jadwal Trip</a>
     </header>
+
+    <section class="about-section" id="about">
+        <h2>About Us</h2>
+        <p>
+            joshmount hadir untuk memfasilitasi kamu yang ingin menjelajahi puncak-puncak tertinggi di 
+            Indonesia dengan rasa aman dan nyaman. Dengan konsep Climb with Brotherhood, kami 
+            mengedepankan solidaritas dan kekeluargaan di setiap perjalanan.
+        </p>
+    </section>
+
+    <section class="team-section" id="team">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Alawi" class="team-img">
+                <div class="team-info"><h3>Alawi</h3><p>Leader</p></div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="agew" class="team-img">
+                <div class="team-info"><h3>agew</h3><p>Administrator</p></div>
+            </div>
+            <div class="team-card">
+                <img src="image_7.png" alt="Deri" class="team-img">
+                <div class="team-info"><h3>Deri</h3><p>Digital Creative</p></div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="Ina" class="team-img">
+                <div class="team-info"><h3>Ina</h3><p>Logistik 1</p></div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="Rizal" class="team-img">
+                <div class="team-info"><h3>Rizal</h3><p>Logistik 2</p></div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="Egi" class="team-img">
+                <div class="team-info"><h3>Egi</h3><p>Inventory Alat</p></div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="Nazmi" class="team-img">
+                <div class="team-info"><h3>Nazmi</h3><p>Benner</p></div>
+            </div>
+        </div>
+    </section>
 
     <section class="trip-section" id="trip">
         <h2>Upcoming Trips</h2>
@@ -201,33 +296,14 @@
                     <a href="https://wa.me/6281234567890" class="btn-book">Booking Sekarang</a>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=600" class="card-img">
-                <div class="card-body">
-                    <span class="price-tag">Rp 2.900.000 /pax</span>
-                    <h3 class="trip-title">Sailing Labuan Bajo</h3>
-                    <div class="trip-meta"><i class="fas fa-ship"></i> 3 Hari 2 Malam (LOB)</div>
-                    <a href="https://wa.me/6281234567890" class="btn-book">Booking Sekarang</a>
-                </div>
-            </div>
         </div>
-    </section>
-
-    <section id="about">
-        <h2 style="margin-bottom: 20px;">About Us</h2>
-        <p>
-            joshmount hadir untuk memfasilitasi kamu yang ingin menjelajahi puncak-puncak tertinggi di Indonesia 
-            dengan rasa aman dan nyaman. Dengan konsep Climb with Brotherhood, kami mengedepankan solidaritas 
-            dan kekeluargaan di setiap perjalanan.
-        </p>
     </section>
 
     <footer>
         <div style="font-weight: 800; font-size: 1.5rem; margin-bottom: 10px;">joshmount</div>
         <p style="opacity: 0.7; margin-bottom: 20px;">Open Trip • Private Trip • Dokumentasi Perjalanan</p>
         <a href="https://www.instagram.com/derrr_ans" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-        <div class="copyright">&copy; 2026 joshmount by Deri. All Rights Reserved.</div>
+        <div style="margin-top: 30px; opacity: 0.4; font-size: 0.8rem;">&copy; 2026 by joshmount. All Rights Reserved.</div>
     </footer>
 
 </body>
